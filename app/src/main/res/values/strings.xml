@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">BGB</string>
+    <string name="menu_inicio">INICIO</string>
+    <string name="menu_categories">CATEGORÍAS</string>
+    <string name="menu_establishments">LOCALES</string>
+    <string name="menu_companies">EMPRESAS</string>
 </resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_home"
+        android:title="@string/menu_inicio"
+        android:icon="@drawable/ic_baseline_home_24" />
+    <item android:id="@+id/action_categories"
+        android:title="@string/menu_categories"
+        android:icon="@drawable/ic_baseline_category_24" />
+    <item android:id="@+id/action_establishments"
+        android:title="@string/menu_establishments"
+        android:icon="@drawable/ic_baseline_place_24" />
+    <item android:id="@+id/action_companies"
+        android:title="@string/menu_companies"
+        android:icon="@drawable/ic_baseline_business_24" />
+</menu>
