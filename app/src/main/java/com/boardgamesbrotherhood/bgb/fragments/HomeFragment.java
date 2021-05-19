@@ -3,12 +3,23 @@ package com.boardgamesbrotherhood.bgb.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.boardgamesbrotherhood.bgb.Adapters.GamesAdapter;
+import com.boardgamesbrotherhood.bgb.Connections.FirebaseProvider;
+import com.boardgamesbrotherhood.bgb.Models.Game;
+import com.boardgamesbrotherhood.bgb.OnGamesLoaded;
 import com.boardgamesbrotherhood.bgb.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,34 +27,16 @@ import com.boardgamesbrotherhood.bgb.R;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    List<Game> gamesList = new ArrayList<>();
 
     public HomeFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static HomeFragment newInstance(String param1, String param2) {
+    public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -51,16 +44,36 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        gamesList.add(new Game("TESTO", "https://i.ebayimg.com/thumbs/images/g/3hcAAOSwCH9eTf1G/s-l96.jpg"));
+        RecyclerView rv = view.findViewById(R.id.recycler_view);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 3);
+        rv.setLayoutManager(mLayoutManager);
+        rv.setItemAnimator(new DefaultItemAnimator());
+        rv.setNestedScrollingEnabled(false);
+        GamesAdapter ga = new GamesAdapter(getActivity(), gamesList);
+        rv.setAdapter(ga);
+
+        TextView t = view.findViewById(R.id.textidprueba);
+        t.setText("PRUEBAAAAAAAAAAAAAAAAAAAAA");
+
+
+        FirebaseProvider.loadGames(new OnGamesLoaded() {
+            @Override
+            public void onTaskComplete(List<Game> games) {
+                gamesList.clear();
+                gamesList.addAll(games);
+                ga.notifyDataSetChanged();
+                System.out.println("donete");
+            }
+        });
+        return view;
     }
 }
