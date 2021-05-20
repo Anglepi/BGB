@@ -41,18 +41,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-/*
-        FirebaseProvider.loadGames(new OnGamesLoaded() {
-            @Override
-            public void onTaskComplete(List<Game> games) {
-                //Aqui usar games para hacer la vista
-                ImageView v = findViewById(R.id.imagetest);
-                Glide.with(getApplicationContext()).load(games.get(0).getThumbnail()).into(v);
-            }
-        });
-*/
-/*
-TODO revisar creacion usuario
+
+        /*
+        TODO revisar creacion usuario
 
         fa.signInWithEmailAndPassword("esdfe@hotmail.com", "contraseña").addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                                                                                      @Override
@@ -63,7 +54,8 @@ TODO revisar creacion usuario
         );
 
         fa.createUserWithEmailAndPassword("test@test.com", "clavetest");
-*/
+        */
+
         ActionBar toolbar = getSupportActionBar();
         toolbar.setTitle(R.string.menu_inicio);
 

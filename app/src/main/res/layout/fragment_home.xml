@@ -15,12 +15,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/textidprueba"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/popular_games" />
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
