@@ -46,8 +46,6 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        System.out.println("Creando "+position);
-
         final Game game = gameList.get(position);
         holder.title.setText(game.getTitle());
 

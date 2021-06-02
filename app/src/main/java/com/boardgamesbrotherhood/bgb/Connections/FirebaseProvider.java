@@ -14,6 +14,7 @@ import java.util.List;
 
 public class FirebaseProvider {
     private static final FirebaseDatabase fdb = FirebaseDatabase.getInstance("https://boardgames-brotherhood-default-rtdb.europe-west1.firebasedatabase.app/");
+
     public static void loadGames(OnGamesLoaded ogl){
         fdb.getReference().child("games").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

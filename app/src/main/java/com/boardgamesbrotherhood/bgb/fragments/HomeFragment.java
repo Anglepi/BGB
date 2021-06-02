@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.boardgamesbrotherhood.bgb.Adapters.GamesAdapter;
 import com.boardgamesbrotherhood.bgb.Connections.FirebaseProvider;
+import com.boardgamesbrotherhood.bgb.MainActivity;
 import com.boardgamesbrotherhood.bgb.Models.Game;
 import com.boardgamesbrotherhood.bgb.OnGamesLoaded;
 import com.boardgamesbrotherhood.bgb.R;
@@ -21,7 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
-    List<Game> gamesList = new ArrayList<>();
 
     public HomeFragment() {
         // Required empty public constructor
@@ -50,9 +50,9 @@ public class HomeFragment extends Fragment {
         rv.setLayoutManager(mLayoutManager);
         rv.setItemAnimator(new DefaultItemAnimator());
         rv.setNestedScrollingEnabled(false);
-        GamesAdapter ga = new GamesAdapter(getActivity(), gamesList);
+        GamesAdapter ga = new GamesAdapter(getActivity(), MainActivity.popularGames);
         rv.setAdapter(ga);
-
+        /*
         FirebaseProvider.loadGames(new OnGamesLoaded() {
             @Override
             public void onTaskComplete(List<Game> games) {
@@ -62,6 +62,8 @@ public class HomeFragment extends Fragment {
                 System.out.println("donete");
             }
         });
+        */
+
         return view;
     }
 }

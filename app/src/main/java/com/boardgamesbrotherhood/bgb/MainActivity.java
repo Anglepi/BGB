@@ -35,6 +35,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth fa = FirebaseAuth.getInstance();
+    Fragment homeFragment, categoriesFragment, establishmentsFragment, companiesFragment;
+    public static List<Game> popularGames;
 
 
     @Override
@@ -59,32 +61,32 @@ public class MainActivity extends AppCompatActivity {
         ActionBar toolbar = getSupportActionBar();
         toolbar.setTitle(R.string.menu_inicio);
 
-        loadFragment(new HomeFragment());
+        homeFragment = new HomeFragment();
+        categoriesFragment = new CategoriesFragment();
+        establishmentsFragment = new EstablishmentsFragment();
+        companiesFragment = new CompaniesFragment();
+
+        dataInitializer();
 
         BottomNavigationView bottom_navigation = (BottomNavigationView) findViewById(R.id.bottomNavigation);
         bottom_navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment fragment;
                 switch (item.getItemId()) {
                     case R.id.action_home:
-                        fragment = new HomeFragment();
-                        loadFragment(fragment);
+                        loadFragment(homeFragment);
                         toolbar.setTitle(R.string.menu_inicio);
                         return true;
                     case R.id.action_categories:
-                        fragment = new CategoriesFragment();
-                        loadFragment(fragment);
+                        loadFragment(categoriesFragment);
                         toolbar.setTitle(R.string.menu_categories);
                         return true;
                     case R.id.action_establishments:
-                        fragment = new EstablishmentsFragment();
-                        loadFragment(fragment);
+                        loadFragment(establishmentsFragment);
                         toolbar.setTitle(R.string.menu_establishments);
                         return true;
                     case R.id.action_companies:
-                        fragment = new CompaniesFragment();
-                        loadFragment(fragment);
+                        loadFragment(companiesFragment);
                         toolbar.setTitle(R.string.menu_companies);
                         return true;
                 }
@@ -93,6 +95,18 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private void dataInitializer(){
+        popularGames = new ArrayList<>();
+        FirebaseProvider.loadGames(new OnGamesLoaded() {
+            @Override
+            public void onTaskComplete(List<Game> games) {
+                popularGames.clear();
+                popularGames.addAll(games);
+                loadFragment(homeFragment);
+            }
+        });
     }
 
     private void loadFragment(Fragment fragment) {
