@@ -9,19 +9,20 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.boardgamesbrotherhood.bgb.CardDisplayable;
 import com.boardgamesbrotherhood.bgb.Models.Game;
 import com.boardgamesbrotherhood.bgb.R;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.MyViewHolder> {
+public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.MyViewHolder> {
     private Context context;
-    private List<Game> gameList;
+    private List<CardDisplayable> cardList;
 
-    public GamesAdapter(Context context, List<Game> gameList) {
+    public CardsAdapter(Context context, List<CardDisplayable> cardList) {
         this.context = context;
-        this.gameList = gameList;
+        this.cardList = cardList;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -46,16 +47,16 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        final Game game = gameList.get(position);
-        holder.title.setText(game.getTitle());
+        final CardDisplayable displayable = cardList.get(position);
+        holder.title.setText(displayable.getCardTitle());
 
         Glide.with(context)
-                .load(game.getThumbnail())
+                .load(displayable.getCardThumbnail())
                 .into(holder.thumbnail);
     }
 
     @Override
     public int getItemCount() {
-        return gameList.size();
+        return cardList.size();
     }
 }

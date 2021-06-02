@@ -1,6 +1,8 @@
 package com.boardgamesbrotherhood.bgb.Models;
 
-public class Game {
+import com.boardgamesbrotherhood.bgb.CardDisplayable;
+
+public class Game implements CardDisplayable {
     private String title;
     private String company;
     private String thumbnail;
@@ -20,5 +22,15 @@ public class Game {
 
     public String getThumbnail() {
         return thumbnail;
+    }
+
+    @Override
+    public String getCardTitle() {
+        return getTitle();
+    }
+
+    @Override
+    public String getCardThumbnail() {
+        return getThumbnail();
     }
 }

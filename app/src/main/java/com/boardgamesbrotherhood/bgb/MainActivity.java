@@ -8,8 +8,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.boardgamesbrotherhood.bgb.Connections.FirebaseProvider;
 import com.boardgamesbrotherhood.bgb.Models.Game;
@@ -17,18 +15,9 @@ import com.boardgamesbrotherhood.bgb.fragments.CategoriesFragment;
 import com.boardgamesbrotherhood.bgb.fragments.CompaniesFragment;
 import com.boardgamesbrotherhood.bgb.fragments.EstablishmentsFragment;
 import com.boardgamesbrotherhood.bgb.fragments.HomeFragment;
-import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth fa = FirebaseAuth.getInstance();
     Fragment homeFragment, categoriesFragment, establishmentsFragment, companiesFragment;
-    public static List<Game> popularGames;
+    public static List<CardDisplayable> popularGames;
 
 
     @Override
@@ -99,11 +88,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void dataInitializer(){
         popularGames = new ArrayList<>();
-        FirebaseProvider.loadGames(new OnGamesLoaded() {
+        FirebaseProvider.loadGames(new OnDataLoaded() {
             @Override
-            public void onTaskComplete(List<Game> games) {
+            public void onTaskComplete(List<?> games) {
                 popularGames.clear();
-                popularGames.addAll(games);
+                popularGames.addAll((List<Game>) games);
                 loadFragment(homeFragment);
             }
         });

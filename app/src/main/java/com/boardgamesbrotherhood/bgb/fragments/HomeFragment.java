@@ -11,14 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.boardgamesbrotherhood.bgb.Adapters.GamesAdapter;
-import com.boardgamesbrotherhood.bgb.Connections.FirebaseProvider;
+import com.boardgamesbrotherhood.bgb.Adapters.CardsAdapter;
+import com.boardgamesbrotherhood.bgb.CardDisplayable;
 import com.boardgamesbrotherhood.bgb.MainActivity;
-import com.boardgamesbrotherhood.bgb.Models.Game;
-import com.boardgamesbrotherhood.bgb.OnGamesLoaded;
 import com.boardgamesbrotherhood.bgb.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
@@ -50,10 +47,10 @@ public class HomeFragment extends Fragment {
         rv.setLayoutManager(mLayoutManager);
         rv.setItemAnimator(new DefaultItemAnimator());
         rv.setNestedScrollingEnabled(false);
-        GamesAdapter ga = new GamesAdapter(getActivity(), MainActivity.popularGames);
+        CardsAdapter ga = new CardsAdapter(getActivity(), MainActivity.popularGames);
         rv.setAdapter(ga);
         /*
-        FirebaseProvider.loadGames(new OnGamesLoaded() {
+        FirebaseProvider.loadGames(new OnDataLoaded() {
             @Override
             public void onTaskComplete(List<Game> games) {
                 gamesList.clear();
