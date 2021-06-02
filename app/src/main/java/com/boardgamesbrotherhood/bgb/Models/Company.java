@@ -1,4 +1,31 @@
 package com.boardgamesbrotherhood.bgb.Models;
 
-public class Company {
+import com.boardgamesbrotherhood.bgb.CardDisplayable;
+
+public class Company implements CardDisplayable {
+    String name;
+    String image;
+
+    public Company(String name, String image) {
+        this.name = name;
+        this.image = image;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    @Override
+    public String getCardTitle() {
+        return getName();
+    }
+
+    @Override
+    public String getCardThumbnail() {
+        return getImage();
+    }
 }
