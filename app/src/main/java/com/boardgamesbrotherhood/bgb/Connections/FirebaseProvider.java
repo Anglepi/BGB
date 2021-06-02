@@ -2,6 +2,7 @@ package com.boardgamesbrotherhood.bgb.Connections;
 
 import androidx.annotation.NonNull;
 
+import com.boardgamesbrotherhood.bgb.Models.Category;
 import com.boardgamesbrotherhood.bgb.Models.Game;
 import com.boardgamesbrotherhood.bgb.OnDataLoaded;
 import com.google.firebase.database.DataSnapshot;
@@ -25,6 +26,26 @@ public class FirebaseProvider {
                     games.add(new Game(ds.child("title").getValue().toString(), ds.child("thumbnail").getValue().toString()));
                 }
                 odl.onTaskComplete(games);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public static void loadCategories(OnDataLoaded odl){
+        fdb.getReference().child("categories").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //dataSnapshot tendria los datos de "games"
+                List<Category> categories = new ArrayList<>();
+                for(DataSnapshot ds: dataSnapshot.getChildren()){
+                    categories.add(new Category(ds.child("title").getValue().toString(), ds.child("thumbnail").getValue().toString()));
+                }
+                odl.onTaskComplete(categories);
 
             }
 

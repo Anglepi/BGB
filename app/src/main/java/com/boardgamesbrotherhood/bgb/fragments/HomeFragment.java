@@ -40,7 +40,6 @@ public class HomeFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         RecyclerView rv = view.findViewById(R.id.recycler_view);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
@@ -49,17 +48,6 @@ public class HomeFragment extends Fragment {
         rv.setNestedScrollingEnabled(false);
         CardsAdapter ga = new CardsAdapter(getActivity(), MainActivity.popularGames);
         rv.setAdapter(ga);
-        /*
-        FirebaseProvider.loadGames(new OnDataLoaded() {
-            @Override
-            public void onTaskComplete(List<Game> games) {
-                gamesList.clear();
-                gamesList.addAll(games);
-                ga.notifyDataSetChanged();
-                System.out.println("donete");
-            }
-        });
-        */
 
         return view;
     }
