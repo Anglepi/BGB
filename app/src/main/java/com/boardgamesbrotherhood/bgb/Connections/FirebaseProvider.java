@@ -3,6 +3,7 @@ package com.boardgamesbrotherhood.bgb.Connections;
 import androidx.annotation.NonNull;
 
 import com.boardgamesbrotherhood.bgb.Models.Category;
+import com.boardgamesbrotherhood.bgb.Models.Establishment;
 import com.boardgamesbrotherhood.bgb.Models.Game;
 import com.boardgamesbrotherhood.bgb.OnDataLoaded;
 import com.google.firebase.database.DataSnapshot;
@@ -46,6 +47,29 @@ public class FirebaseProvider {
                     categories.add(new Category(ds.child("title").getValue().toString(), ds.child("thumbnail").getValue().toString()));
                 }
                 odl.onTaskComplete(categories);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public static void loadEstablishments(OnDataLoaded odl){
+        fdb.getReference().child("establishments").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //dataSnapshot tendria los datos de "games"
+                List<Establishment> establishments = new ArrayList<>();
+                for(DataSnapshot ds: dataSnapshot.getChildren()){
+                    String name = ds.child("name").getValue().toString();
+                    String t = ds.child("thumbnail").getValue().toString();
+                    String asd = ds.child("address").getValue().toString();
+                    establishments.add(new Establishment(ds.child("name").getValue().toString(), ds.child("thumbnail").getValue().toString(), ds.child("address").getValue().toString()));
+                }
+                odl.onTaskComplete(establishments);
 
             }
 

@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth fa = FirebaseAuth.getInstance();
     Fragment homeFragment, categoriesFragment, establishmentsFragment, companiesFragment;
-    public static List<CardDisplayable> popularGames, categories;
+    public static List<CardDisplayable> popularGames, categories, establishments, companies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,8 +90,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseProvider.loadGames(new OnDataLoaded() {
             @Override
             public void onTaskComplete(List<?> games) {
-                popularGames.clear();
-                popularGames.addAll((List<Game>) games);
+                popularGames.addAll((List<CardDisplayable>) games);
                 loadFragment(homeFragment);
             }
         });
@@ -99,9 +98,16 @@ public class MainActivity extends AppCompatActivity {
         categories = new ArrayList<>();
         FirebaseProvider.loadCategories(new OnDataLoaded() {
             @Override
-            public void onTaskComplete(List<?> games) {
-                categories.clear();
-                categories.addAll((List<Game>) games);
+            public void onTaskComplete(List<?> ctg) {
+                categories.addAll((List<CardDisplayable>) ctg);
+            }
+        });
+
+        establishments = new ArrayList<>();
+        FirebaseProvider.loadEstablishments(new OnDataLoaded() {
+            @Override
+            public void onTaskComplete(List<?> est) {
+                establishments.addAll((List<CardDisplayable>) est);
             }
         });
     }
