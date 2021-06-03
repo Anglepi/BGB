@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         establishmentsFragment = new EstablishmentsFragment();
         companiesFragment = new CompaniesFragment();
 
-        dataInitializer();
+        loadFragment(homeFragment);
 
         BottomNavigationView bottom_navigation = (BottomNavigationView) findViewById(R.id.bottomNavigation);
         bottom_navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -83,41 +84,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-    }
-
-    private void dataInitializer(){
-        popularGames = new ArrayList<>();
-        FirebaseProvider.loadGames(new OnDataLoaded() {
-            @Override
-            public void onTaskComplete(List<?> games) {
-                popularGames.addAll((List<CardDisplayable>) games);
-                loadFragment(homeFragment);
-            }
-        });
-
-        categories = new ArrayList<>();
-        FirebaseProvider.loadCategories(new OnDataLoaded() {
-            @Override
-            public void onTaskComplete(List<?> ctg) {
-                categories.addAll((List<CardDisplayable>) ctg);
-            }
-        });
-
-        establishments = new ArrayList<>();
-        FirebaseProvider.loadEstablishments(new OnDataLoaded() {
-            @Override
-            public void onTaskComplete(List<?> est) {
-                establishments.addAll((List<CardDisplayable>) est);
-            }
-        });
-
-        companies = new ArrayList<>();
-        FirebaseProvider.loadCompanies(new OnDataLoaded() {
-            @Override
-            public void onTaskComplete(List<?> comp) {
-                companies.addAll((List<CardDisplayable>) comp);
-            }
-        });
     }
 
     private void loadFragment(Fragment fragment) {
