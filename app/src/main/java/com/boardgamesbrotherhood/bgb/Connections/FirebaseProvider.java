@@ -3,6 +3,7 @@ package com.boardgamesbrotherhood.bgb.Connections;
 import androidx.annotation.NonNull;
 
 import com.boardgamesbrotherhood.bgb.Models.Category;
+import com.boardgamesbrotherhood.bgb.Models.Company;
 import com.boardgamesbrotherhood.bgb.Models.Establishment;
 import com.boardgamesbrotherhood.bgb.Models.Game;
 import com.boardgamesbrotherhood.bgb.OnDataLoaded;
@@ -41,7 +42,6 @@ public class FirebaseProvider {
         fdb.getReference().child("categories").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //dataSnapshot tendria los datos de "games"
                 List<Category> categories = new ArrayList<>();
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     categories.add(new Category(ds.child("title").getValue().toString(), ds.child("thumbnail").getValue().toString()));
@@ -61,12 +61,8 @@ public class FirebaseProvider {
         fdb.getReference().child("establishments").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //dataSnapshot tendria los datos de "games"
                 List<Establishment> establishments = new ArrayList<>();
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
-                    String name = ds.child("name").getValue().toString();
-                    String t = ds.child("thumbnail").getValue().toString();
-                    String asd = ds.child("address").getValue().toString();
                     establishments.add(new Establishment(ds.child("name").getValue().toString(), ds.child("thumbnail").getValue().toString(), ds.child("address").getValue().toString()));
                 }
                 odl.onTaskComplete(establishments);
@@ -79,4 +75,23 @@ public class FirebaseProvider {
             }
         });
     }
+    public static void loadCompanies(OnDataLoaded odl){
+        fdb.getReference().child("companies").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                List<Company> companies = new ArrayList<>();
+                for(DataSnapshot ds: dataSnapshot.getChildren()){
+                    companies.add(new Company(ds.child("name").getValue().toString(), ds.child("thumbnail").getValue().toString()));
+                }
+                odl.onTaskComplete(companies);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
 }

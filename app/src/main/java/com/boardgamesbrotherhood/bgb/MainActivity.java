@@ -110,6 +110,14 @@ public class MainActivity extends AppCompatActivity {
                 establishments.addAll((List<CardDisplayable>) est);
             }
         });
+
+        companies = new ArrayList<>();
+        FirebaseProvider.loadCompanies(new OnDataLoaded() {
+            @Override
+            public void onTaskComplete(List<?> comp) {
+                companies.addAll((List<CardDisplayable>) comp);
+            }
+        });
     }
 
     private void loadFragment(Fragment fragment) {
