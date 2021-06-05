@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth fa = FirebaseAuth.getInstance();
     Fragment homeFragment, categoriesFragment, establishmentsFragment, companiesFragment;
     public static List<CardDisplayable> popularGames, categories, establishments, companies;
-    public static MainActivity instance;
+    private static MainActivity instance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,9 +96,10 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
     }
 
-    public void openGame(Game game){
-        Intent i = new Intent(this, GameActivity.class);
+    public static void openGame(Game game){
+        MainActivity myInstance = instance;
+        Intent i = new Intent(myInstance.getApplicationContext(), GameActivity.class);
         i.putExtra("game",game);
-        startActivity(i);
+        myInstance.startActivity(i);
     }
 }

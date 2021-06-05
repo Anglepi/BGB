@@ -58,7 +58,7 @@ public class Game implements CardDisplayable, Parcelable {
 
     @Override
     public void openCard(){
-        MainActivity.instance.openGame(this);
+        MainActivity.openGame(this);
     }
 
     @Override
