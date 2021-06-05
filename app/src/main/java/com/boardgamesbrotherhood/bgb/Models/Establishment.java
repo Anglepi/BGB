@@ -1,5 +1,7 @@
 package com.boardgamesbrotherhood.bgb.Models;
 
+import android.content.Context;
+
 import com.boardgamesbrotherhood.bgb.CardDisplayable;
 
 public class Establishment implements CardDisplayable {
@@ -36,7 +38,7 @@ public class Establishment implements CardDisplayable {
     }
 
     @Override
-    public void openCard(){
+    public void openCard(Context context){
 
     }
 }

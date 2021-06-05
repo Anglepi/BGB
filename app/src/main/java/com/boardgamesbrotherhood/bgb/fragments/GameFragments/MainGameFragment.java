@@ -46,13 +46,11 @@ public class MainGameFragment extends Fragment {
 
         ImageView gameImage = view.findViewById(R.id.GameImage);
 
-
-        //TODO El cambio de fragmentos seguramente habrá que hacerlo de otra manera. Revisar también en GameActivity
         Button btnRooms = view.findViewById(R.id.GameRoomsButton);
         btnRooms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GameActivity.getInstance().switchToFragment("roomsFragment");
+                ((GameActivity)getActivity()).loadFragment("roomsFragment");
             }
         });
 
@@ -60,7 +58,7 @@ public class MainGameFragment extends Fragment {
         btnDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GameActivity.getInstance().switchToFragment("detailsFragment");
+                ((GameActivity)getActivity()).loadFragment("detailsFragment");
             }
         });
 
@@ -68,7 +66,7 @@ public class MainGameFragment extends Fragment {
         btnExpansions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GameActivity.getInstance().switchToFragment("expansionsFragment");
+                ((GameActivity)getActivity()).loadFragment("expansionsFragment");
             }
         });
 

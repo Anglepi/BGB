@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth fa = FirebaseAuth.getInstance();
     Fragment homeFragment, categoriesFragment, establishmentsFragment, companiesFragment;
     public static List<CardDisplayable> popularGames, categories, establishments, companies;
-    private static MainActivity instance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
         loadFragment(homeFragment);
 
         BottomNavigationView bottom_navigation = (BottomNavigationView) findViewById(R.id.bottomNavigation);
-        //TODO no cambiar entre fragments al pulsar system back
         bottom_navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -86,20 +84,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        instance = this;
     }
 
     private void loadFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_container, fragment);
-        //transaction.addToBackStack(null);
         transaction.commit();
-    }
-
-    public static void openGame(Game game){
-        MainActivity myInstance = instance;
-        Intent i = new Intent(myInstance.getApplicationContext(), GameActivity.class);
-        i.putExtra("game",game);
-        myInstance.startActivity(i);
     }
 }

@@ -31,7 +31,6 @@ public class GameActivity extends AppCompatActivity {
 
         loadMainFragment(mainFragment);
 
-        instance = this;
     }
 
     private void loadMainFragment(Fragment fragment) {
@@ -40,15 +39,7 @@ public class GameActivity extends AppCompatActivity {
         transaction.commit();
     }
 
-    public static GameActivity getInstance(){
-        return instance;
-    }
-
-    public static void switchToFragment(String fragmentName){
-        instance.loadFragment(fragmentName);
-    }
-
-    private void loadFragment(String fragmentName){
+    public void loadFragment(String fragmentName){
         switch(fragmentName){
             case "roomsFragment":
                 loadFragment(roomsFragment);

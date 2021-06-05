@@ -34,11 +34,13 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.MyViewHolder
             title = view.findViewById(R.id.title);
             thumbnail = view.findViewById(R.id.thumbnail);
 
+            //Esto probablemente dará problemas si añadimos nuevos elementos a la lista en tiempo de ejecución
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     CardDisplayable selected = cardList.get(getAbsoluteAdapterPosition());
-                    selected.openCard();
+                    selected.openCard(context);
+                    //Pasar contexto como parametro a opencard para hacer el intent
                 }
             });
         }

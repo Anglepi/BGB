@@ -1,9 +1,12 @@
 package com.boardgamesbrotherhood.bgb.Models;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.boardgamesbrotherhood.bgb.CardDisplayable;
+import com.boardgamesbrotherhood.bgb.GameActivity;
 import com.boardgamesbrotherhood.bgb.MainActivity;
 
 public class Game implements CardDisplayable, Parcelable {
@@ -59,8 +62,10 @@ public class Game implements CardDisplayable, Parcelable {
     }
 
     @Override
-    public void openCard(){
-        MainActivity.openGame(this);
+    public void openCard(Context context){
+        Intent i = new Intent(context, GameActivity.class);
+        i.putExtra("game",this);
+        context.startActivity(i);
     }
 
     @Override
