@@ -28,4 +28,9 @@ public class Company implements CardDisplayable {
     public String getCardThumbnail() {
         return getImage();
     }
+
+    @Override
+    public void openCard(){
+
+    }
 }

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth fa = FirebaseAuth.getInstance();
     Fragment homeFragment, categoriesFragment, establishmentsFragment, companiesFragment;
     public static List<CardDisplayable> popularGames, categories, establishments, companies;
+    public static MainActivity instance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        instance = this;
     }
 
     private void loadFragment(Fragment fragment) {
@@ -92,5 +94,11 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.frame_container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    public void openGame(Game game){
+        Intent i = new Intent(this, GameActivity.class);
+        i.putExtra("game",game);
+        startActivity(i);
     }
 }

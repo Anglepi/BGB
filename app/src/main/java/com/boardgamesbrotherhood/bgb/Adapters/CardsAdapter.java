@@ -27,12 +27,20 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.MyViewHolder
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
-
         public ImageView thumbnail;
+
         public MyViewHolder(View view) {
             super(view);
             title = view.findViewById(R.id.title);
             thumbnail = view.findViewById(R.id.thumbnail);
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CardDisplayable selected = cardList.get(getAbsoluteAdapterPosition());
+                    selected.openCard();
+                }
+            });
         }
 
     }
@@ -53,6 +61,15 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.MyViewHolder
         Glide.with(context)
                 .load(displayable.getCardThumbnail())
                 .into(holder.thumbnail);
+
+
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                displayable.openCard();
+//            }
+//        });
+
     }
 
     @Override

@@ -34,4 +34,9 @@ public class Establishment implements CardDisplayable {
     public String getCardThumbnail() {
         return getImage();
     }
+
+    @Override
+    public void openCard(){
+
+    }
 }

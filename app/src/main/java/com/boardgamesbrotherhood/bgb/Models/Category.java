@@ -28,4 +28,9 @@ public class Category implements CardDisplayable {
     public String getCardThumbnail() {
         return getThumbnail();
     }
+
+    @Override
+    public void openCard(){
+
+    }
 }
