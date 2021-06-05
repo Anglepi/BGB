@@ -2,6 +2,7 @@
 <resources>
     <dimen name="card_thumbnail_height">120dp</dimen>
     <dimen name="card_thumbnail_width">120dp</dimen>
+    <dimen name="card_thumbnail_padding">20dp</dimen>
     <dimen name="margin_between_cards">20dp</dimen>
     <dimen name="game_tittle_padding">6dp</dimen>
 </resources>

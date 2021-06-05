@@ -40,7 +40,7 @@ public class CompaniesFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_companies, container, false);
         RecyclerView rv = view.findViewById(R.id.recycler_view);
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 3);
         rv.setLayoutManager(mLayoutManager);
         rv.setItemAnimator(new DefaultItemAnimator());
         rv.setNestedScrollingEnabled(false);

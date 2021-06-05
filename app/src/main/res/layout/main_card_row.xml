@@ -24,11 +24,12 @@
 
             <ImageView
                 android:id="@+id/thumbnail"
-                android:layout_width="@dimen/card_thumbnail_width"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/card_thumbnail_height"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:contentDescription="@+contentDescription/description"
+                android:padding="@dimen/card_thumbnail_padding"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
