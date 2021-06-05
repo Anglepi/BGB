@@ -67,9 +67,9 @@ public class StartActivity extends AppCompatActivity {
     }
 
     public void startMainActivity(){
-        //TODO no volver a esta actividad al pulsar system back
         Intent toMainActivity = new Intent(this, MainActivity.class);
         startActivity(toMainActivity);
+        finish();
     }
 
 
