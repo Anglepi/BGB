@@ -11,15 +11,17 @@ public class Game implements CardDisplayable, Parcelable {
     private String description;
     private String thumbnail;
 
-    public Game(String title, String thumbnail){
+    public Game(String title, String thumbnail, String description){
         this.title = title;
         this.thumbnail = thumbnail;
+        this.description = description;
     }
 
     protected Game(Parcel in) {
+        //El orden debe ser el mismo que en el constructor
         title = in.readString();
-        description = in.readString();
         thumbnail = in.readString();
+        description = in.readString();
     }
 
     public static final Creator<Game> CREATOR = new Creator<Game>() {
@@ -70,5 +72,6 @@ public class Game implements CardDisplayable, Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(getTitle());
         dest.writeString(getThumbnail());
+        dest.writeString(getDescription());
     }
 }

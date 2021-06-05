@@ -25,7 +25,7 @@ public class FirebaseProvider {
                 //dataSnapshot tendria los datos de "games"
                 List<Game> games = new ArrayList<>();
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
-                    games.add(new Game(ds.child("title").getValue().toString(), ds.child("thumbnail").getValue().toString()));
+                    games.add(new Game(ds.child("title").getValue().toString(), ds.child("thumbnail").getValue().toString(), ds.child("description").getValue().toString()));
                 }
                 odl.onTaskComplete(games);
 

@@ -42,7 +42,6 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.MyViewHolder
                 }
             });
         }
-
     }
 
     @Override

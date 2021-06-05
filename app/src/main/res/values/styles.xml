@@ -6,5 +6,5 @@
         <item name="android:windowDisablePreview">true</item>
         <item name="android:windowFullscreen">true</item>
     </style>
-    
+
 </resources>
