@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         loadFragment(homeFragment);
 
         BottomNavigationView bottom_navigation = (BottomNavigationView) findViewById(R.id.bottomNavigation);
+        //TODO no cambiar entre fragments al pulsar system back
         bottom_navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -74,10 +75,10 @@ public class MainActivity extends AppCompatActivity {
                         loadFragment(establishmentsFragment);
                         toolbar.setTitle(R.string.menu_establishments);
                         return true;
-                    case R.id.action_companies:
+                    /*case R.id.action_companies:
                         loadFragment(companiesFragment);
                         toolbar.setTitle(R.string.menu_companies);
-                        return true;
+                        return true;*/
                 }
                 return false;
             }

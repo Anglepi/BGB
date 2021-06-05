@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StartActivity extends AppCompatActivity {
-    private int nLoads = 4;
+    private int nLoads = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,14 +51,14 @@ public class StartActivity extends AppCompatActivity {
             }
         });
 
-        MainActivity.companies = new ArrayList<>();
+        /*MainActivity.companies = new ArrayList<>();
         FirebaseProvider.loadCompanies(new OnDataLoaded() {
             @Override
             public void onTaskComplete(List<?> comp) {
                 MainActivity.companies.addAll((List<CardDisplayable>) comp);
                 dataInitializingFinished();
             }
-        });
+        });*/
     }
 
     public synchronized void dataInitializingFinished(){
@@ -67,6 +67,7 @@ public class StartActivity extends AppCompatActivity {
     }
 
     public void startMainActivity(){
+        //TODO no volver a esta actividad al pulsar system back
         Intent toMainActivity = new Intent(this, MainActivity.class);
         startActivity(toMainActivity);
     }

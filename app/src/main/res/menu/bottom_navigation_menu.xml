@@ -9,7 +9,7 @@
     <item android:id="@+id/action_establishments"
         android:title="@string/menu_establishments"
         android:icon="@drawable/ic_baseline_place_24" />
-    <item android:id="@+id/action_companies"
+    <!--<item android:id="@+id/action_companies"
         android:title="@string/menu_companies"
-        android:icon="@drawable/ic_baseline_business_24" />
+        android:icon="@drawable/ic_baseline_business_24" />-->
 </menu>
