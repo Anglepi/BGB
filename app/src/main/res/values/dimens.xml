@@ -5,4 +5,6 @@
     <dimen name="card_thumbnail_padding">20dp</dimen>
     <dimen name="margin_between_cards">20dp</dimen>
     <dimen name="game_tittle_padding">6dp</dimen>
+    <dimen name="game_button_outer_margin">20dp</dimen>
+    <dimen name="game_button_inner_margin">10dp</dimen>
 </resources>
