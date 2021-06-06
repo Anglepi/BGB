@@ -31,8 +31,8 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.MyViewHolder
 
         public MyViewHolder(View view) {
             super(view);
-            title = view.findViewById(R.id.title);
-            thumbnail = view.findViewById(R.id.thumbnail);
+            title = view.findViewById(R.id.card_title);
+            thumbnail = view.findViewById(R.id.card_thumbnail);
 
             //Esto probablemente dará problemas si añadimos nuevos elementos a la lista en tiempo de ejecución
             view.setOnClickListener(new View.OnClickListener() {
