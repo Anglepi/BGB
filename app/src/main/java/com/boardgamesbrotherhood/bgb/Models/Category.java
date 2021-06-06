@@ -1,8 +1,11 @@
 package com.boardgamesbrotherhood.bgb.Models;
 
 import android.content.Context;
+import android.content.Intent;
 
 import com.boardgamesbrotherhood.bgb.CardDisplayable;
+import com.boardgamesbrotherhood.bgb.CategoryActivity;
+import com.boardgamesbrotherhood.bgb.GameActivity;
 
 public class Category implements CardDisplayable {
     private String name;
@@ -33,6 +36,8 @@ public class Category implements CardDisplayable {
 
     @Override
     public void openCard(Context context){
-
+        Intent i = new Intent(context, CategoryActivity.class);
+        i.putExtra("category", getName());
+        context.startActivity(i);
     }
 }

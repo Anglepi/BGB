@@ -29,7 +29,7 @@ public class Establishment implements CardDisplayable {
 
     @Override
     public String getCardTitle() {
-        return getName()+"\n"+getAddress();
+        return getName();
     }
 
     @Override

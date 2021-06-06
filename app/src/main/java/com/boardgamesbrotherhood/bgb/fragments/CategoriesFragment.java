@@ -12,8 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.boardgamesbrotherhood.bgb.Adapters.CardsAdapter;
+import com.boardgamesbrotherhood.bgb.CardDisplayable;
 import com.boardgamesbrotherhood.bgb.MainActivity;
 import com.boardgamesbrotherhood.bgb.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class CategoriesFragment extends Fragment {
@@ -39,11 +43,11 @@ public class CategoriesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_categories, container, false);
         RecyclerView rv = view.findViewById(R.id.recycler_view);
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 3);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
         rv.setLayoutManager(mLayoutManager);
         rv.setItemAnimator(new DefaultItemAnimator());
         rv.setNestedScrollingEnabled(false);
-        CardsAdapter ga = new CardsAdapter(getActivity(), MainActivity.categories);
+        CardsAdapter ga = new CardsAdapter(getActivity(),  MainActivity.categories);
         rv.setAdapter(ga);
 
         return view;

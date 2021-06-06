@@ -6,18 +6,23 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.boardgamesbrotherhood.bgb.CardDisplayable;
+import com.boardgamesbrotherhood.bgb.ExtendedCardDisplayable;
 import com.boardgamesbrotherhood.bgb.GameActivity;
 import com.boardgamesbrotherhood.bgb.MainActivity;
 
-public class Game implements CardDisplayable, Parcelable {
+import java.util.ArrayList;
+
+public class Game implements ExtendedCardDisplayable, Parcelable {
     private String title;
     private String description;
     private String thumbnail;
+    private ArrayList<String> categories;
 
-    public Game(String title, String thumbnail, String description){
+    public Game(String title, String thumbnail, String description, ArrayList<String> categories){
         this.title = title;
         this.thumbnail = thumbnail;
         this.description = description;
+        this.categories = categories;
     }
 
     protected Game(Parcel in) {
@@ -25,6 +30,7 @@ public class Game implements CardDisplayable, Parcelable {
         title = in.readString();
         thumbnail = in.readString();
         description = in.readString();
+        in.readList(categories, String.class.getClassLoader());
     }
 
     public static final Creator<Game> CREATOR = new Creator<Game>() {
@@ -51,6 +57,8 @@ public class Game implements CardDisplayable, Parcelable {
         return thumbnail;
     }
 
+    public ArrayList<String> getCategories() { return categories; }
+
     @Override
     public String getCardTitle() {
         return getTitle();
@@ -62,9 +70,13 @@ public class Game implements CardDisplayable, Parcelable {
     }
 
     @Override
+    public String getCardDescription() { return getDescription(); }
+
+    @Override
     public void openCard(Context context){
         Intent i = new Intent(context, GameActivity.class);
         i.putExtra("game",this);
+        //i.addFlags(Intent.)
         context.startActivity(i);
     }
 

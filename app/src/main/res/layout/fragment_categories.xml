@@ -19,7 +19,7 @@
             android:orientation="vertical"
             android:layout_gravity="center_horizontal">
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
                 android:padding="3dp"
                 android:text="@string/popular_categories"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold" />-->
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view"

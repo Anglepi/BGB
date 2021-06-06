@@ -9,6 +9,9 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.boardgamesbrotherhood.bgb.Connections.FirebaseProvider;
+import com.boardgamesbrotherhood.bgb.Models.Category;
+import com.boardgamesbrotherhood.bgb.Models.Establishment;
+import com.boardgamesbrotherhood.bgb.Models.Game;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +31,7 @@ public class StartActivity extends AppCompatActivity {
         FirebaseProvider.loadGames(new OnDataLoaded() {
             @Override
             public void onTaskComplete(List<?> games) {
-                MainActivity.popularGames.addAll((List<CardDisplayable>) games);
+                MainActivity.popularGames.addAll((List<Game>) games);
                 dataInitializingFinished();
             }
         });
@@ -37,7 +40,7 @@ public class StartActivity extends AppCompatActivity {
         FirebaseProvider.loadCategories(new OnDataLoaded() {
             @Override
             public void onTaskComplete(List<?> ctg) {
-                MainActivity.categories.addAll((List<CardDisplayable>) ctg);
+                MainActivity.categories.addAll((List<Category>) ctg);
                 dataInitializingFinished();
             }
         });
@@ -46,7 +49,7 @@ public class StartActivity extends AppCompatActivity {
         FirebaseProvider.loadEstablishments(new OnDataLoaded() {
             @Override
             public void onTaskComplete(List<?> est) {
-                MainActivity.establishments.addAll((List<CardDisplayable>) est);
+                MainActivity.establishments.addAll((List<Establishment>) est);
                 dataInitializingFinished();
             }
         });

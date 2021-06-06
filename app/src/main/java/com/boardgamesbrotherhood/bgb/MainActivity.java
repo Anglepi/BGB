@@ -12,6 +12,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.boardgamesbrotherhood.bgb.Connections.FirebaseProvider;
+import com.boardgamesbrotherhood.bgb.Models.Category;
+import com.boardgamesbrotherhood.bgb.Models.Company;
+import com.boardgamesbrotherhood.bgb.Models.Establishment;
 import com.boardgamesbrotherhood.bgb.Models.Game;
 import com.boardgamesbrotherhood.bgb.fragments.CategoriesFragment;
 import com.boardgamesbrotherhood.bgb.fragments.CompaniesFragment;
@@ -27,7 +30,11 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth fa = FirebaseAuth.getInstance();
     Fragment homeFragment, categoriesFragment, establishmentsFragment, companiesFragment;
-    public static List<CardDisplayable> popularGames, categories, establishments, companies;
+    public static List<Game> popularGames;
+    public static List<Category> categories;
+    public static List<Establishment> establishments;
+    public static List<Company> companies;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
