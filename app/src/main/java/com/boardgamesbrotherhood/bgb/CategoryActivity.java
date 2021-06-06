@@ -46,4 +46,10 @@ public class CategoryActivity extends AppCompatActivity {
         rv.setNestedScrollingEnabled(false);
         rv.setAdapter(eca);
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return false;
+    }
 }
