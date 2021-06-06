@@ -11,4 +11,6 @@
     <string name="expansions_button_label">Expansiones</string>
     <string name="rooms_button_label">Salas</string>
     <string name="like_button_label">Me gusta</string>
+    <string name="game_image">Imagen del juego</string>
+    <string name="game_description">Descripción del juego</string>
 </resources>
