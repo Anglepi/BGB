@@ -31,7 +31,11 @@ public class LoginActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        String registeredUser = getIntent().getExtras().getString("user");
+        String registeredUser = "";
+        Bundle extras = getIntent().getExtras();
+        if(extras != null){
+            registeredUser = extras.getString("user");
+        }
         if(!registeredUser.isEmpty()){
             Snackbar.make(getWindow().getDecorView().getRootView(), "¡Gracias por unirte a BGB! Ya puedes iniciar sesión", Snackbar.LENGTH_LONG).show();
             EditText username = findViewById(R.id.textFieldUsername);
