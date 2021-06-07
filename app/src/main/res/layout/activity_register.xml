@@ -29,15 +29,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/section_padding"
-        android:text="@string/username"
+        android:text="@string/email"
         android:textSize="@dimen/section_title"
-        app:layout_constraintBottom_toTopOf="@+id/textFieldUsername"
+        app:layout_constraintBottom_toTopOf="@+id/textFieldRegisterUsername"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <EditText
-        android:id="@+id/textFieldUsername"
+        android:id="@+id/textFieldRegisterUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -58,7 +58,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <EditText
-        android:id="@+id/textFieldPassword"
+        android:id="@+id/textFieldRegisterPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -76,10 +76,10 @@
         android:textSize="@dimen/section_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textFieldPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/textFieldRegisterPassword" />
 
     <EditText
-        android:id="@+id/textFieldRepeatPassword"
+        android:id="@+id/textFieldRegisterRepeatPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -96,7 +96,7 @@
         android:layout_marginTop="@dimen/form_button_marginTop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textFieldRepeatPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/textFieldRegisterRepeatPassword" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
