@@ -30,7 +30,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    FirebaseAuth fa = FirebaseAuth.getInstance();
     Fragment homeFragment, categoriesFragment, establishmentsFragment, companiesFragment;
     public static List<Game> popularGames;
     public static List<Category> categories;
@@ -46,7 +45,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        //Buscar la lupa y ponerle el evento
+        if(item.getTitle().equals("Iniciar sesión")){
+            Intent i = new Intent(this, LoginActivity.class);
+            startActivity(i);
+
+        } else if(item.getTitle().equals("Registrarse")){
+            Intent i = new Intent(this, RegisterActivity.class);
+            startActivity(i);
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -56,23 +62,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*
-        TODO revisar creacion usuario
-
-        fa.signInWithEmailAndPassword("esdfe@hotmail.com", "contraseña").addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                                                                                                     @Override
-                                                                                                     public void onSuccess(AuthResult authResult) {
-                                                                                                         Snackbar.make(getWindow().getDecorView().getRootView(), "bien", Snackbar.LENGTH_LONG).show();
-                                                                                                     }
-                                                                                                 }
-        );
-
-        fa.createUserWithEmailAndPassword("test@test.com", "clavetest");
-        */
-
         toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         toolbar.setTitle(R.string.menu_inicio);
+        setSupportActionBar(toolbar);
 
 
         homeFragment = new HomeFragment();

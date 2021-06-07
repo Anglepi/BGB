@@ -13,4 +13,9 @@
     <string name="like_button_label">Me gusta</string>
     <string name="game_image">Imagen del juego</string>
     <string name="game_description">Descripción del juego</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="register">Registrarse</string>
+    <string name="username">Nombre de usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="repeatPassword">Repite contraseña</string>
 </resources>

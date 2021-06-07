@@ -9,4 +9,7 @@
     <dimen name="game_button_inner_margin">10dp</dimen>
     <dimen name="extended_card_description_padding">5dp</dimen>
     <dimen name="card_title_text_size">18sp</dimen>
+    <dimen name="section_title">20sp</dimen>
+    <dimen name="section_padding">10dp</dimen>
+    <dimen name="form_button_marginTop">40dp</dimen>
 </resources>
