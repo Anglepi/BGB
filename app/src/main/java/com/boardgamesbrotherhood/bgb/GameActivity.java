@@ -1,11 +1,16 @@
 package com.boardgamesbrotherhood.bgb;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.icu.text.UnicodeSetSpanner;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.boardgamesbrotherhood.bgb.Models.Game;
 import com.boardgamesbrotherhood.bgb.fragments.GameFragments.*;
@@ -14,15 +19,13 @@ public class GameActivity extends AppCompatActivity {
     public static Game game;
     private Fragment mainFragment, roomsFragment, detailsFragment, expansionsFragment;
     private static GameActivity instance;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         game = getIntent().getExtras().getParcelable("game");
         setContentView(R.layout.activity_game);
-
-        ActionBar toolbar = getSupportActionBar();
-        toolbar.setTitle(game.getTitle());
 
         mainFragment = new MainGameFragment();
         roomsFragment = new RoomsGameFragment();
@@ -31,6 +34,10 @@ public class GameActivity extends AppCompatActivity {
 
         loadMainFragment(mainFragment);
 
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(game.getTitle());
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void loadMainFragment(Fragment fragment) {
@@ -65,5 +72,18 @@ public class GameActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return false;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        //Buscar la lupa y ponerle el evento
+
+        return super.onOptionsItemSelected(item);
     }
 }

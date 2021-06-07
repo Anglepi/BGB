@@ -3,12 +3,14 @@ package com.boardgamesbrotherhood.bgb;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.boardgamesbrotherhood.bgb.Connections.FirebaseProvider;
@@ -34,7 +36,20 @@ public class MainActivity extends AppCompatActivity {
     public static List<Category> categories;
     public static List<Establishment> establishments;
     public static List<Company> companies;
+    private Toolbar toolbar;
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        //Buscar la lupa y ponerle el evento
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +70,10 @@ public class MainActivity extends AppCompatActivity {
         fa.createUserWithEmailAndPassword("test@test.com", "clavetest");
         */
 
-        ActionBar toolbar = getSupportActionBar();
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         toolbar.setTitle(R.string.menu_inicio);
+
 
         homeFragment = new HomeFragment();
         categoriesFragment = new CategoriesFragment();
