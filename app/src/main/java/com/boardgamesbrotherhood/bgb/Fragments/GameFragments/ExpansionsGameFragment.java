@@ -1,4 +1,4 @@
-package com.boardgamesbrotherhood.bgb.fragments.GameFragments;
+package com.boardgamesbrotherhood.bgb.Fragments.GameFragments;
 
 import android.os.Bundle;
 
@@ -11,15 +11,16 @@ import android.view.ViewGroup;
 import com.boardgamesbrotherhood.bgb.R;
 
 
-public class RoomsGameFragment extends Fragment {
+public class ExpansionsGameFragment extends Fragment {
 
-    public RoomsGameFragment() {
+
+    public ExpansionsGameFragment() {
         // Required empty public constructor
     }
 
 
-    public static RoomsGameFragment newInstance(String param1, String param2) {
-        RoomsGameFragment fragment = new RoomsGameFragment();
+    public static ExpansionsGameFragment newInstance(String param1, String param2) {
+        ExpansionsGameFragment fragment = new ExpansionsGameFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -33,6 +34,6 @@ public class RoomsGameFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_rooms_game, container, false);
+        return inflater.inflate(R.layout.fragment_expansions_game, container, false);
     }
 }

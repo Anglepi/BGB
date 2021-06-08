@@ -1,4 +1,4 @@
-package com.boardgamesbrotherhood.bgb.fragments.UserFragments;
+package com.boardgamesbrotherhood.bgb.Fragments.UserFragments;
 
 import android.os.Bundle;
 

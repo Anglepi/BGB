@@ -1,32 +1,28 @@
-package com.boardgamesbrotherhood.bgb;
+package com.boardgamesbrotherhood.bgb.Activities;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.boardgamesbrotherhood.bgb.Connections.FirebaseProvider;
 import com.boardgamesbrotherhood.bgb.Models.Category;
 import com.boardgamesbrotherhood.bgb.Models.Company;
 import com.boardgamesbrotherhood.bgb.Models.Establishment;
 import com.boardgamesbrotherhood.bgb.Models.Game;
 import com.boardgamesbrotherhood.bgb.Models.UserSession;
-import com.boardgamesbrotherhood.bgb.fragments.CategoriesFragment;
-import com.boardgamesbrotherhood.bgb.fragments.CompaniesFragment;
-import com.boardgamesbrotherhood.bgb.fragments.EstablishmentsFragment;
-import com.boardgamesbrotherhood.bgb.fragments.HomeFragment;
+import com.boardgamesbrotherhood.bgb.R;
+import com.boardgamesbrotherhood.bgb.Fragments.CategoriesFragment;
+import com.boardgamesbrotherhood.bgb.Fragments.CompaniesFragment;
+import com.boardgamesbrotherhood.bgb.Fragments.EstablishmentsFragment;
+import com.boardgamesbrotherhood.bgb.Fragments.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {

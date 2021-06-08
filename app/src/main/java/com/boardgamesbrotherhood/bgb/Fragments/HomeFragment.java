@@ -1,4 +1,4 @@
-package com.boardgamesbrotherhood.bgb.fragments;
+package com.boardgamesbrotherhood.bgb.Fragments;
 
 import android.os.Bundle;
 
@@ -12,19 +12,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.boardgamesbrotherhood.bgb.Adapters.CardsAdapter;
-import com.boardgamesbrotherhood.bgb.MainActivity;
+import com.boardgamesbrotherhood.bgb.Activities.MainActivity;
 import com.boardgamesbrotherhood.bgb.R;
 
+public class HomeFragment extends Fragment {
 
-public class CompaniesFragment extends Fragment {
-
-    public CompaniesFragment() {
+    public HomeFragment() {
         // Required empty public constructor
     }
 
-    public static CompaniesFragment newInstance() {
-        CompaniesFragment fragment = new CompaniesFragment();
+    public static HomeFragment newInstance() {
+        HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -36,15 +36,14 @@ public class CompaniesFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_companies, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
         RecyclerView rv = view.findViewById(R.id.recycler_view);
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 3);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
         rv.setLayoutManager(mLayoutManager);
         rv.setItemAnimator(new DefaultItemAnimator());
         rv.setNestedScrollingEnabled(false);
-        CardsAdapter ga = new CardsAdapter(getActivity(), MainActivity.companies);
+        CardsAdapter ga = new CardsAdapter(getActivity(), MainActivity.popularGames);
         rv.setAdapter(ga);
 
         return view;

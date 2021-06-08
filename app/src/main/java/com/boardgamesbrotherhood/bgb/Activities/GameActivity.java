@@ -1,30 +1,88 @@
-package com.boardgamesbrotherhood.bgb;
+package com.boardgamesbrotherhood.bgb.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.boardgamesbrotherhood.bgb.Models.Game;
 import com.boardgamesbrotherhood.bgb.Models.UserSession;
+import com.boardgamesbrotherhood.bgb.R;
+import com.boardgamesbrotherhood.bgb.Fragments.GameFragments.*;
 
-public class UserDataActivity extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity {
+    public static Game game;
+    private Fragment mainFragment, roomsFragment, detailsFragment, expansionsFragment;
+    private static GameActivity instance;
     private Toolbar toolbar;
-    //TODO tbd create fragments
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_data);
+        game = getIntent().getExtras().getParcelable("game");
+        setContentView(R.layout.activity_game);
+
+        mainFragment = new MainGameFragment();
+        roomsFragment = new RoomsGameFragment();
+        detailsFragment = new DetailsGameFragment();
+        expansionsFragment = new ExpansionsGameFragment();
+
+        loadMainFragment(mainFragment);
 
         toolbar = findViewById(R.id.toolbar);
-        //TODO change toolbar title
-        toolbar.setTitle(R.string.menu_inicio);
+        toolbar.setTitle(game.getTitle());
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    private void loadMainFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.game_frame_container, fragment);
+        transaction.commit();
+    }
+
+    public void loadFragment(String fragmentName){
+        switch(fragmentName){
+            case "roomsFragment":
+                loadFragment(roomsFragment);
+                break;
+            case "detailsFragment":
+                loadFragment(detailsFragment);
+                break;
+            case "expansionsFragment":
+                loadFragment(expansionsFragment);
+                break;
+        }
+    }
+
+    private void loadFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.game_frame_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return false;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if(UserSession.SessionEstablished){
+            getMenuInflater().inflate(R.menu.toolbar_menu_logged_user, menu);
+        } else {
+            getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        }
+        return true;
     }
 
     @Override
@@ -69,15 +127,5 @@ public class UserDataActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        if(UserSession.SessionEstablished){
-            getMenuInflater().inflate(R.menu.toolbar_menu_logged_user, menu);
-        } else {
-            getMenuInflater().inflate(R.menu.toolbar_menu, menu);
-        }
-        return true;
     }
 }

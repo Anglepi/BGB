@@ -1,4 +1,4 @@
-package com.boardgamesbrotherhood.bgb;
+package com.boardgamesbrotherhood.bgb.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.boardgamesbrotherhood.bgb.Models.UserSession;
+import com.boardgamesbrotherhood.bgb.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;

@@ -1,4 +1,4 @@
-package com.boardgamesbrotherhood.bgb.fragments;
+package com.boardgamesbrotherhood.bgb.Fragments;
 
 import android.os.Bundle;
 
@@ -12,22 +12,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.boardgamesbrotherhood.bgb.Adapters.CardsAdapter;
-import com.boardgamesbrotherhood.bgb.CardDisplayable;
-import com.boardgamesbrotherhood.bgb.MainActivity;
+import com.boardgamesbrotherhood.bgb.Activities.MainActivity;
 import com.boardgamesbrotherhood.bgb.R;
 
-import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class EstablishmentsFragment extends Fragment {
 
-    public HomeFragment() {
+    public EstablishmentsFragment() {
         // Required empty public constructor
     }
 
-    public static HomeFragment newInstance() {
-        HomeFragment fragment = new HomeFragment();
+    public static EstablishmentsFragment newInstance() {
+        EstablishmentsFragment fragment = new EstablishmentsFragment();
         Bundle args = new Bundle();
-
         fragment.setArguments(args);
         return fragment;
     }
@@ -39,14 +36,15 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_establishments, container, false);
         RecyclerView rv = view.findViewById(R.id.recycler_view);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
         rv.setLayoutManager(mLayoutManager);
         rv.setItemAnimator(new DefaultItemAnimator());
         rv.setNestedScrollingEnabled(false);
-        CardsAdapter ga = new CardsAdapter(getActivity(), MainActivity.popularGames);
+        CardsAdapter ga = new CardsAdapter(getActivity(), MainActivity.establishments);
         rv.setAdapter(ga);
 
         return view;

@@ -1,4 +1,4 @@
-package com.boardgamesbrotherhood.bgb.fragments.GameFragments;
+package com.boardgamesbrotherhood.bgb.Fragments.GameFragments;
 
 import android.os.Bundle;
 
@@ -11,9 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.boardgamesbrotherhood.bgb.GameActivity;
-import com.boardgamesbrotherhood.bgb.MainActivity;
-import com.boardgamesbrotherhood.bgb.Models.Game;
+import com.boardgamesbrotherhood.bgb.Activities.GameActivity;
 import com.boardgamesbrotherhood.bgb.R;
 import com.bumptech.glide.Glide;
 

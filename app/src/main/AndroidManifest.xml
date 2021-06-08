@@ -11,19 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BGB">
-        <activity android:name=".UserDataActivity" android:parentActivityName=".MainActivity">
+        <activity android:name=".Activities.UserDataActivity" android:parentActivityName=".Activities.MainActivity">
 
         </activity>
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".Activities.RegisterActivity" />
+        <activity android:name=".Activities.LoginActivity" />
         <activity
-            android:name=".CategoryActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name=".Activities.CategoryActivity"
+            android:parentActivityName=".Activities.MainActivity" />
         <activity
-            android:name=".GameActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name=".Activities.GameActivity"
+            android:parentActivityName=".Activities.MainActivity" />
         <activity
-            android:name=".StartActivity"
+            android:name=".Activities.StartActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".Activities.MainActivity" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.boardgamesbrotherhood.bgb.fragments.UserFragments;
+package com.boardgamesbrotherhood.bgb.Fragments.UserFragments;
 
 import android.os.Bundle;
 
@@ -12,10 +12,10 @@ import com.boardgamesbrotherhood.bgb.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link GamesUserFragment#newInstance} factory method to
+ * Use the {@link ProfileUserFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class GamesUserFragment extends Fragment {
+public class ProfileUserFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class GamesUserFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public GamesUserFragment() {
+    public ProfileUserFragment() {
         // Required empty public constructor
     }
 
@@ -36,11 +36,11 @@ public class GamesUserFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment GamesUserFragment.
+     * @return A new instance of fragment ProfileUserFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static GamesUserFragment newInstance(String param1, String param2) {
-        GamesUserFragment fragment = new GamesUserFragment();
+    public static ProfileUserFragment newInstance(String param1, String param2) {
+        ProfileUserFragment fragment = new ProfileUserFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +61,6 @@ public class GamesUserFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_games_user, container, false);
+        return inflater.inflate(R.layout.fragment_profile_user, container, false);
     }
 }

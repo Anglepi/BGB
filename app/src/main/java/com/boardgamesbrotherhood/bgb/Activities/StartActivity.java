@@ -1,17 +1,16 @@
-package com.boardgamesbrotherhood.bgb;
+package com.boardgamesbrotherhood.bgb.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.boardgamesbrotherhood.bgb.Connections.FirebaseProvider;
 import com.boardgamesbrotherhood.bgb.Models.Category;
 import com.boardgamesbrotherhood.bgb.Models.Establishment;
 import com.boardgamesbrotherhood.bgb.Models.Game;
+import com.boardgamesbrotherhood.bgb.OnDataLoaded;
+import com.boardgamesbrotherhood.bgb.R;
 
 import java.util.ArrayList;
 import java.util.List;

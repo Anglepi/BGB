@@ -4,8 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.boardgamesbrotherhood.bgb.CardDisplayable;
-import com.boardgamesbrotherhood.bgb.CategoryActivity;
-import com.boardgamesbrotherhood.bgb.GameActivity;
+import com.boardgamesbrotherhood.bgb.Activities.CategoryActivity;
 
 public class Category implements CardDisplayable {
     private String name;

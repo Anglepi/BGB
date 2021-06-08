@@ -1,4 +1,4 @@
-package com.boardgamesbrotherhood.bgb.fragments;
+package com.boardgamesbrotherhood.bgb.Fragments;
 
 import android.os.Bundle;
 
@@ -12,24 +12,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.boardgamesbrotherhood.bgb.Adapters.CardsAdapter;
-import com.boardgamesbrotherhood.bgb.CardDisplayable;
-import com.boardgamesbrotherhood.bgb.MainActivity;
+import com.boardgamesbrotherhood.bgb.Activities.MainActivity;
 import com.boardgamesbrotherhood.bgb.R;
 
-import java.util.ArrayList;
-import java.util.List;
 
+public class CompaniesFragment extends Fragment {
 
-public class CategoriesFragment extends Fragment {
-    public CategoriesFragment() {
+    public CompaniesFragment() {
         // Required empty public constructor
     }
 
-
-    public static CategoriesFragment newInstance() {
-        CategoriesFragment fragment = new CategoriesFragment();
+    public static CompaniesFragment newInstance() {
+        CompaniesFragment fragment = new CompaniesFragment();
         Bundle args = new Bundle();
-
         fragment.setArguments(args);
         return fragment;
     }
@@ -37,17 +32,19 @@ public class CategoriesFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_categories, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_companies, container, false);
         RecyclerView rv = view.findViewById(R.id.recycler_view);
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 3);
         rv.setLayoutManager(mLayoutManager);
         rv.setItemAnimator(new DefaultItemAnimator());
         rv.setNestedScrollingEnabled(false);
-        CardsAdapter ga = new CardsAdapter(getActivity(),  MainActivity.categories);
+        CardsAdapter ga = new CardsAdapter(getActivity(), MainActivity.companies);
         rv.setAdapter(ga);
 
         return view;

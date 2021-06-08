@@ -1,4 +1,4 @@
-package com.boardgamesbrotherhood.bgb.fragments;
+package com.boardgamesbrotherhood.bgb.Fragments;
 
 import android.os.Bundle;
 
@@ -12,19 +12,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.boardgamesbrotherhood.bgb.Adapters.CardsAdapter;
-import com.boardgamesbrotherhood.bgb.MainActivity;
+import com.boardgamesbrotherhood.bgb.Activities.MainActivity;
 import com.boardgamesbrotherhood.bgb.R;
 
 
-public class EstablishmentsFragment extends Fragment {
-
-    public EstablishmentsFragment() {
+public class CategoriesFragment extends Fragment {
+    public CategoriesFragment() {
         // Required empty public constructor
     }
 
-    public static EstablishmentsFragment newInstance() {
-        EstablishmentsFragment fragment = new EstablishmentsFragment();
+
+    public static CategoriesFragment newInstance() {
+        CategoriesFragment fragment = new CategoriesFragment();
         Bundle args = new Bundle();
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -32,19 +33,17 @@ public class EstablishmentsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_establishments, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_categories, container, false);
         RecyclerView rv = view.findViewById(R.id.recycler_view);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
         rv.setLayoutManager(mLayoutManager);
         rv.setItemAnimator(new DefaultItemAnimator());
         rv.setNestedScrollingEnabled(false);
-        CardsAdapter ga = new CardsAdapter(getActivity(), MainActivity.establishments);
+        CardsAdapter ga = new CardsAdapter(getActivity(),  MainActivity.categories);
         rv.setAdapter(ga);
 
         return view;

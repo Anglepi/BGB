@@ -1,74 +1,59 @@
-package com.boardgamesbrotherhood.bgb;
+package com.boardgamesbrotherhood.bgb.Activities;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.icu.text.UnicodeSetSpanner;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.boardgamesbrotherhood.bgb.Adapters.ExtendedCardsAdapter;
 import com.boardgamesbrotherhood.bgb.Models.Game;
 import com.boardgamesbrotherhood.bgb.Models.UserSession;
-import com.boardgamesbrotherhood.bgb.fragments.GameFragments.*;
+import com.boardgamesbrotherhood.bgb.R;
 
-public class GameActivity extends AppCompatActivity {
-    public static Game game;
-    private Fragment mainFragment, roomsFragment, detailsFragment, expansionsFragment;
-    private static GameActivity instance;
+import java.util.ArrayList;
+
+
+public class CategoryActivity extends AppCompatActivity {
+    private String category;
+    private ArrayList<Game> gamesInCategory;
     private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        game = getIntent().getExtras().getParcelable("game");
-        setContentView(R.layout.activity_game);
+        setContentView(R.layout.activity_category);
+        category = getIntent().getExtras().getString("category");
 
-        mainFragment = new MainGameFragment();
-        roomsFragment = new RoomsGameFragment();
-        detailsFragment = new DetailsGameFragment();
-        expansionsFragment = new ExpansionsGameFragment();
-
-        loadMainFragment(mainFragment);
+        initializeGames();
 
         toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(game.getTitle());
+        toolbar.setTitle(category);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    private void loadMainFragment(Fragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.game_frame_container, fragment);
-        transaction.commit();
-    }
-
-    public void loadFragment(String fragmentName){
-        switch(fragmentName){
-            case "roomsFragment":
-                loadFragment(roomsFragment);
-                break;
-            case "detailsFragment":
-                loadFragment(detailsFragment);
-                break;
-            case "expansionsFragment":
-                loadFragment(expansionsFragment);
-                break;
+    private void initializeGames(){
+        gamesInCategory = new ArrayList<>();
+        for(Game game: MainActivity.popularGames){
+            if(game.getCategories().contains(category)){
+                gamesInCategory.add(game);
+            }
         }
-    }
 
-    private void loadFragment(Fragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.game_frame_container, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+        RecyclerView rv = (RecyclerView) findViewById(R.id.rv_category);
+        ExtendedCardsAdapter eca = new ExtendedCardsAdapter(this,gamesInCategory);
+        rv.setLayoutManager(new LinearLayoutManager(this));
+        rv.setItemAnimator(new DefaultItemAnimator());
+        rv.setNestedScrollingEnabled(false);
+        rv.setAdapter(eca);
     }
-
 
     @Override
     public boolean onSupportNavigateUp() {

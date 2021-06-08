@@ -5,10 +5,8 @@ import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.boardgamesbrotherhood.bgb.CardDisplayable;
 import com.boardgamesbrotherhood.bgb.ExtendedCardDisplayable;
-import com.boardgamesbrotherhood.bgb.GameActivity;
-import com.boardgamesbrotherhood.bgb.MainActivity;
+import com.boardgamesbrotherhood.bgb.Activities.GameActivity;
 
 import java.util.ArrayList;
 
