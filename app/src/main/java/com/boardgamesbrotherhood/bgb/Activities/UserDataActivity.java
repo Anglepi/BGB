@@ -81,4 +81,10 @@ public class UserDataActivity extends AppCompatActivity {
         }
         return true;
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return false;
+    }
 }
