@@ -18,6 +18,7 @@ import com.boardgamesbrotherhood.bgb.Models.Category;
 import com.boardgamesbrotherhood.bgb.Models.Company;
 import com.boardgamesbrotherhood.bgb.Models.Establishment;
 import com.boardgamesbrotherhood.bgb.Models.Game;
+import com.boardgamesbrotherhood.bgb.Models.UserSession;
 import com.boardgamesbrotherhood.bgb.fragments.CategoriesFragment;
 import com.boardgamesbrotherhood.bgb.fragments.CompaniesFragment;
 import com.boardgamesbrotherhood.bgb.fragments.EstablishmentsFragment;
@@ -36,26 +37,6 @@ public class MainActivity extends AppCompatActivity {
     public static List<Establishment> establishments;
     public static List<Company> companies;
     private Toolbar toolbar;
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getTitle().equals("Iniciar sesión")){
-            Intent i = new Intent(this, LoginActivity.class);
-            startActivity(i);
-
-        } else if(item.getTitle().equals("Registrarse")){
-            Intent i = new Intent(this, RegisterActivity.class);
-            startActivity(i);
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,5 +87,59 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_container, fragment);
         transaction.commit();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if(UserSession.SessionEstablished){
+            getMenuInflater().inflate(R.menu.toolbar_menu_logged_user, menu);
+        } else {
+            getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Intent intent;
+        switch (item.getItemId()){
+            case R.id.search_button:
+                //TODO boton de la lupa
+                break;
+            case R.id.overflow_login:
+                intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.overflow_register:
+                intent = new Intent(this, RegisterActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.overflow_my_rofile:
+                intent = new Intent(this, UserDataActivity.class);
+                intent.putExtra("fragment","profile");
+                startActivity(intent);
+                break;
+            case R.id.overflow_my_games:
+                intent = new Intent(this, UserDataActivity.class);
+                intent.putExtra("fragment","games");
+                startActivity(intent);
+                break;
+            case R.id.overflow_ratings:
+                intent = new Intent(this, UserDataActivity.class);
+                intent.putExtra("fragment","ratings");
+                startActivity(intent);
+                break;
+            case R.id.overflow_my_rooms:
+                intent = new Intent(this, UserDataActivity.class);
+                intent.putExtra("fragment","rooms");
+                startActivity(intent);
+                break;
+            case R.id.overflow_logout:
+                UserSession.Logout();
+                finish();
+                startActivity(getIntent());
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

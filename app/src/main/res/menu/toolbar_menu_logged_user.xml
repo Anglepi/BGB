@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/search" android:id="@+id/search_button" android:icon="@drawable/ic_baseline_search_24" app:showAsAction="always"/>
+    <item android:title="@string/my_profile" android:id="@+id/overflow_my_rofile"/>
+    <item android:title="@string/my_games" android:id="@+id/overflow_my_games"/>
+    <item android:title="@string/ratings" android:id="@+id/overflow_ratings"/>
+    <item android:title="@string/my_rooms" android:id="@+id/overflow_my_rooms"/>
+    <item android:title="@string/logout" android:id="@+id/overflow_logout"/>
+</menu>

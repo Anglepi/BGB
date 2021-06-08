@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.boardgamesbrotherhood.bgb.Models.UserSession;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
@@ -69,8 +70,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private void authenticationSuccess(){
         FirebaseUser fu = fa.getCurrentUser();
+        UserSession.Login(fu);
         Intent toMainActivity = new Intent(this, MainActivity.class);
-        toMainActivity.setFlags(toMainActivity.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY);
+        toMainActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(toMainActivity);
     }
 
