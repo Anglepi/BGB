@@ -13,4 +13,5 @@
     <dimen name="section_padding">10dp</dimen>
     <dimen name="form_button_marginTop">40dp</dimen>
     <dimen name="form_marginHorizontal">20dp</dimen>
+    <dimen name="logo_distance_from_toolbar">10dp</dimen>
 </resources>

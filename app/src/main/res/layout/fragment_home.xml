@@ -24,6 +24,7 @@
                 android:layout_width="258dp"
                 android:layout_height="88dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/logo_distance_from_toolbar"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/logo_bgb" />
 
