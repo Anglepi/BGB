@@ -24,6 +24,7 @@ public class UserDataActivity extends AppCompatActivity {
         //TODO change toolbar title
         toolbar.setTitle(R.string.menu_inicio);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
