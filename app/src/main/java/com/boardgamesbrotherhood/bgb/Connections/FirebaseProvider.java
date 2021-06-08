@@ -6,6 +6,7 @@ import com.boardgamesbrotherhood.bgb.Models.Category;
 import com.boardgamesbrotherhood.bgb.Models.Company;
 import com.boardgamesbrotherhood.bgb.Models.Establishment;
 import com.boardgamesbrotherhood.bgb.Models.Game;
+import com.boardgamesbrotherhood.bgb.Models.UserAccount;
 import com.boardgamesbrotherhood.bgb.OnDataLoaded;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -98,4 +99,34 @@ public class FirebaseProvider {
         });
     }
 
+    public static void loadUsers(OnDataLoaded odl){
+        fdb.getReference().child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                List<UserAccount> users = new ArrayList<>();
+                for(DataSnapshot ds: dataSnapshot.getChildren()){
+                    ArrayList<String> games = new ArrayList<>();
+                    for(DataSnapshot ufg: ds.child("userFavGames").getChildren()){
+                        games.add(ufg.getValue().toString());
+                    }
+                    users.add(new UserAccount(ds.getKey() ,ds.child("firstName").getValue().toString(), ds.child("lastName").getValue().toString(), games));
+                }
+                odl.onTaskComplete(users);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public static void createNewUser(String uid) {
+        fdb.getReference().child("users").child(uid).setValue(new UserAccount());
+    }
+
+    public static void updateExistingUser(UserAccount user) {
+        fdb.getReference().child("users").child(user.getuID()).setValue(user.toDatabase());
+    }
 }

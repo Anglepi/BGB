@@ -67,7 +67,8 @@
             android:layout_height="wrap_content"
             android:text="@string/like_button_label"
             android:layout_marginHorizontal="20dp"
-            app:icon="@drawable/ic_baseline_star_outline_24"
+            android:drawableLeft="@drawable/ic_baseline_star_outline_24"
+            android:drawableTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/GameExpansionsButton" />

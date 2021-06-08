@@ -12,4 +12,5 @@
     <color name="bgb_brown_dark">#250000</color>
     <color name="bgb_red">#D0021B</color>
     <color name="bgb_orange">#FF9F00</color>
+    <color name="light_gray">#B8B8B8</color>
 </resources>

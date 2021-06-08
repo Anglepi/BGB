@@ -1,5 +1,7 @@
 package com.boardgamesbrotherhood.bgb.Fragments.GameFragments;
 
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.boardgamesbrotherhood.bgb.Activities.GameActivity;
+import com.boardgamesbrotherhood.bgb.Activities.LoginActivity;
+import com.boardgamesbrotherhood.bgb.Models.UserSession;
 import com.boardgamesbrotherhood.bgb.R;
 import com.bumptech.glide.Glide;
 
@@ -69,10 +73,23 @@ public class MainGameFragment extends Fragment {
         });
 
         Button btnLike = view.findViewById(R.id.GameLikeButton);
+        if(UserSession.user.likesGame(GameActivity.game.getTitle())){
+            btnLike.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_baseline_star_24,0,0,0);
+        }
         btnLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(UserSession.SessionEstablished){
+                    UserSession.user.addOrRemoveLikedGame(GameActivity.game.getTitle());
+                    if(UserSession.user.likesGame(GameActivity.game.getTitle())){
+                        btnLike.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_baseline_star_24,0,0,0);
+                    } else {
+                        btnLike.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_baseline_star_outline_24,0,0,0);
+                    }
+                } else {
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 

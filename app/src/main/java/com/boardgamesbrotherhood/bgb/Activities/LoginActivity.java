@@ -54,6 +54,19 @@ public class LoginActivity extends AppCompatActivity {
                 login(username.getText().toString(),password.getText().toString());
             }
         });
+
+        Button btnGoToRegister = findViewById(R.id.btnGoToRegister);
+        btnGoToRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToRegister();
+            }
+        });
+    }
+
+    private void goToRegister(){
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
     }
 
     private void login(String username, String password){
@@ -61,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    authenticationSuccess();
+                    authenticationSuccess(fa.getCurrentUser());
                 } else {
                     Snackbar.make(getWindow().getDecorView().getRootView(), "Usuario o clave incorrecta", Snackbar.LENGTH_LONG).show();
                 }
@@ -69,8 +82,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void authenticationSuccess(){
-        FirebaseUser fu = fa.getCurrentUser();
+    private void authenticationSuccess(FirebaseUser fu){
         UserSession.Login(fu);
         Intent toMainActivity = new Intent(this, MainActivity.class);
         toMainActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
