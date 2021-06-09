@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,16 +15,21 @@ import com.boardgamesbrotherhood.bgb.Models.Game;
 import com.boardgamesbrotherhood.bgb.R;
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.MyViewHolder> {
     private Context context;
     private List<? extends CardDisplayable> cardList;
+    private List<? extends CardDisplayable> originalCardList;
 
     public CardsAdapter(Context context, List<? extends CardDisplayable> cardList) {
         this.context = context;
         this.cardList = cardList;
+        this.originalCardList = cardList;
     }
+
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
@@ -76,5 +82,42 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.MyViewHolder
     @Override
     public int getItemCount() {
         return cardList.size();
+    }
+
+    Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            FilterResults fr = new FilterResults();
+
+            if(constraint.length()!=0 && constraint != null){
+                List<CardDisplayable> filtered = new ArrayList<>();
+
+                for(int i=0 ; i<originalCardList.size() ; i++){
+                    String query = constraint.toString().toLowerCase();
+                    String cardTitle = originalCardList.get(i).getCardTitle().toLowerCase();
+                    if(cardTitle.contains(query)){
+                        filtered.add(originalCardList.get(i));
+                    }
+                }
+
+                fr.count = filtered.size();
+                fr.values = filtered;
+            } else {
+                fr.count = originalCardList.size();
+                fr.values = originalCardList;
+            }
+
+            return fr;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            cardList = (List<? extends CardDisplayable>) results.values;
+            notifyDataSetChanged();
+        }
+    };
+
+    public void filterByTitle(String newText) {
+        filter.filter(newText);
     }
 }

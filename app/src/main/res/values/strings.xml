@@ -34,4 +34,5 @@
     <string name="your_last_name">Sus apellidos</string>
     <string name="save">Guardar</string>
     <string name="search_hint">Titulo del juego</string>
+    <string name="search_results">Resultados de la búsqueda</string>
 </resources>
