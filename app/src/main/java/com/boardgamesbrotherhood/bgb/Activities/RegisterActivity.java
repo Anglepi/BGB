@@ -47,15 +47,6 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-//        fa.signInWithEmailAndPassword("esdfe@hotmail.com", "contraseña").addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-//              @Override
-//              public void onSuccess(AuthResult authResult) {
-//                  Snackbar.make(getWindow().getDecorView().getRootView(), "bien", Snackbar.LENGTH_LONG).show();
-//              }
-//          }
-//        );
-//
-//        fa.createUserWithEmailAndPassword("test@test.com", "clavetest");
     }
 
     public void register(String username, String password, String repeatedPassword){

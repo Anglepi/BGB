@@ -18,11 +18,7 @@ import com.boardgamesbrotherhood.bgb.Models.UserSession;
 import com.boardgamesbrotherhood.bgb.R;
 import com.google.android.material.snackbar.Snackbar;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProfileUserFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class ProfileUserFragment extends Fragment {
 
     public ProfileUserFragment() {

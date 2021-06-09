@@ -19,7 +19,6 @@ import com.boardgamesbrotherhood.bgb.Fragments.GameFragments.*;
 public class GameActivity extends AppCompatActivity {
     public static Game game;
     private Fragment mainFragment, roomsFragment, detailsFragment, expansionsFragment;
-    private static GameActivity instance;
     private Toolbar toolbar;
 
     @Override

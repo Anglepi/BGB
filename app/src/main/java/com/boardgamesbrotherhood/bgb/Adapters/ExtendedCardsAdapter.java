@@ -42,7 +42,6 @@ public class ExtendedCardsAdapter extends RecyclerView.Adapter<ExtendedCardsAdap
                 public void onClick(View v) {
                     CardDisplayable selected = cardList.get(getAbsoluteAdapterPosition());
                     selected.openCard(context);
-                    //Pasar contexto como parametro a opencard para hacer el intent
                 }
             });
         }
