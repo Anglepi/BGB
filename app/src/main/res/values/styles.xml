@@ -10,6 +10,7 @@
     <style name="ToolbarStyle" parent="Widget.AppCompat.PopupMenu.Overflow">
         <item name="overlapAnchor">false</item>
         <item name="android:textColorSecondary">@color/white</item>
+        <item name="android:editTextColor">@color/white</item>
     </style>
 
     <style name="OverflowButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow">

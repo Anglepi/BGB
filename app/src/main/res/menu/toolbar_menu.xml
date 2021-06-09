@@ -2,7 +2,11 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="@string/search" android:id="@+id/search_button" android:icon="@drawable/ic_baseline_search_24" app:showAsAction="always"/>
+    <item android:title="@string/search" android:id="@+id/search_button"
+        android:icon="@drawable/ic_baseline_search_24"
+        app:showAsAction="collapseActionView|always"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        />
     <item android:title="@string/login" android:id="@+id/overflow_login"/>
     <item android:title="@string/register" android:id="@+id/overflow_register"/>
 </menu>

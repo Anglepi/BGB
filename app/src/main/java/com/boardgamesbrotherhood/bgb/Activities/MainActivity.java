@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     public static List<Establishment> establishments;
     public static List<Company> companies;
     private Toolbar toolbar;
+    private Menu toolbar_menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.frame_container, fragment);
         transaction.commit();
     }
-
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if(UserSession.SessionEstablished){
@@ -94,14 +95,11 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
-
+*/
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         Intent intent;
         switch (item.getItemId()){
-            case R.id.search_button:
-                //TODO boton de la lupa
-                break;
             case R.id.overflow_login:
                 intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);

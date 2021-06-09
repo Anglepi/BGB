@@ -68,9 +68,6 @@ public class UserDataActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         Intent intent;
         switch (item.getItemId()){
-            case R.id.search_button:
-                //TODO boton de la lupa
-                break;
             case R.id.overflow_login:
                 intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
@@ -122,6 +119,7 @@ public class UserDataActivity extends AppCompatActivity {
         } else {
             getMenuInflater().inflate(R.menu.toolbar_menu, menu);
         }
+        menu.removeItem(R.id.search_button);
         return true;
     }
 
