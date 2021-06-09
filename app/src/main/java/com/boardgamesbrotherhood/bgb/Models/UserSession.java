@@ -12,7 +12,7 @@ import java.util.List;
 public class UserSession {
     public static boolean SessionEstablished = false;
     public static FirebaseUser CurrentUser;
-    public static UserAccount user;
+    public static UserAccount user = new UserAccount();
 
 
     public static void Login(FirebaseUser u){

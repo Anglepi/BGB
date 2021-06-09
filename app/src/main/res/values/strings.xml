@@ -28,4 +28,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="noAccountGoRegister">¿No tienes una cuenta?</string>
+    <string name="name">Nombre</string>
+    <string name="your_name">Su nombre</string>
+    <string name="last_name">Apellidos</string>
+    <string name="your_last_name">Sus apellidos</string>
+    <string name="save">Guardar</string>
 </resources>

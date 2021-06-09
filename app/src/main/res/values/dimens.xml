@@ -14,4 +14,6 @@
     <dimen name="form_button_marginTop">40dp</dimen>
     <dimen name="form_marginHorizontal">20dp</dimen>
     <dimen name="logo_distance_from_toolbar">10dp</dimen>
+    <dimen name="form_margin_between_lines">10dp</dimen>
+    <dimen name="form_label_size">18sp</dimen>
 </resources>

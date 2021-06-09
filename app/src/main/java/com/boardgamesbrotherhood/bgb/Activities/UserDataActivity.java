@@ -3,27 +3,63 @@ package com.boardgamesbrotherhood.bgb.Activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.boardgamesbrotherhood.bgb.Fragments.UserFragments.GamesUserFragment;
+import com.boardgamesbrotherhood.bgb.Fragments.UserFragments.ProfileUserFragment;
+import com.boardgamesbrotherhood.bgb.Fragments.UserFragments.RatingsFragment;
+import com.boardgamesbrotherhood.bgb.Fragments.UserFragments.RoomsUserFragment;
+import com.boardgamesbrotherhood.bgb.Models.Game;
 import com.boardgamesbrotherhood.bgb.Models.UserSession;
 import com.boardgamesbrotherhood.bgb.R;
 
 public class UserDataActivity extends AppCompatActivity {
     private Toolbar toolbar;
-    //TODO tbd create fragments
+    private Fragment roomsUserFragment, gamesUserFragment, profileUserFragment, ratingsFragment;
+    private String section;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_data);
 
+        gamesUserFragment = new GamesUserFragment();
+        profileUserFragment = new ProfileUserFragment();
+        ratingsFragment = new RatingsFragment();
+        roomsUserFragment = new RoomsUserFragment();
+
         toolbar = findViewById(R.id.toolbar);
-        //TODO change toolbar title
-        toolbar.setTitle(R.string.menu_inicio);
+        section = getIntent().getExtras().getString("fragment");
+
+
+        switch (section){
+            case "profile":
+                loadFragment(profileUserFragment);
+                toolbar.setTitle(R.string.my_profile);
+                break;
+            case "games":
+                loadFragment(gamesUserFragment);
+                toolbar.setTitle(R.string.my_games);
+                break;
+            case "ratings":
+                loadFragment(ratingsFragment);
+                toolbar.setTitle(R.string.ratings);
+                break;
+            case "rooms":
+                loadFragment(roomsUserFragment);
+                toolbar.setTitle(R.string.my_rooms);
+                break;
+            default:
+                loadFragment(profileUserFragment);
+                toolbar.setTitle(R.string.my_profile);
+                break;
+        }
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -72,6 +108,13 @@ public class UserDataActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void loadFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_container, fragment);
+        transaction.commit();
+    }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if(UserSession.SessionEstablished){
@@ -86,5 +129,16 @@ public class UserDataActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return false;
+    }
+
+    @Override
+    protected void onResume() {
+        if(section.equals("games")){
+            ((GamesUserFragment) gamesUserFragment).notifyDatasetChanged();
+        }
+        //TODO se podría añadir un mensaje con la opción de deshacer. Se devuelve el conjunto de juegos
+        //previo a la actualización y si hubo diferencia con el posterior a la actualización se ofrece
+        //la posibilidad de restaurarlo
+        super.onResume();
     }
 }

@@ -3,47 +3,39 @@ package com.boardgamesbrotherhood.bgb.Fragments.UserFragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.boardgamesbrotherhood.bgb.Activities.MainActivity;
+import com.boardgamesbrotherhood.bgb.Adapters.CardsAdapter;
+import com.boardgamesbrotherhood.bgb.Adapters.ExtendedCardsAdapter;
+import com.boardgamesbrotherhood.bgb.Models.Game;
+import com.boardgamesbrotherhood.bgb.Models.UserSession;
 import com.boardgamesbrotherhood.bgb.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link GamesUserFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class GamesUserFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    List<Game> user_games = new ArrayList<>();
+    ExtendedCardsAdapter ega;
 
     public GamesUserFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment GamesUserFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static GamesUserFragment newInstance(String param1, String param2) {
+
+    public static GamesUserFragment newInstance() {
         GamesUserFragment fragment = new GamesUserFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -51,16 +43,37 @@ public class GamesUserFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        populateGames();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_games_user, container, false);
+        View view = inflater.inflate(R.layout.fragment_games_user, container, false);
+        RecyclerView rv = view.findViewById(R.id.rv_user_games);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        rv.setLayoutManager(mLayoutManager);
+        rv.setItemAnimator(new DefaultItemAnimator());
+        rv.setNestedScrollingEnabled(false);
+
+        ega = new ExtendedCardsAdapter(getActivity(), user_games);
+        rv.setAdapter(ega);
+        return view;
+    }
+
+    public void populateGames(){
+        user_games.clear();
+        ArrayList<String> user_liked_games = UserSession.user.getUserFavGames();
+        for (Game gm : MainActivity.popularGames) {
+            if(user_liked_games.contains(gm.getTitle())){
+                user_games.add(gm);
+            }
+        }
+    }
+
+    public void notifyDatasetChanged(){
+        populateGames();
+        ega.notifyDataSetChanged();
     }
 }
