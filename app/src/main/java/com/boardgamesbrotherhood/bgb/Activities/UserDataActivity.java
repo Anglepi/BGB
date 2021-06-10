@@ -99,7 +99,7 @@ public class UserDataActivity extends AppCompatActivity {
             case R.id.overflow_logout:
                 UserSession.Logout();
                 finish();
-                startActivity(getIntent());
+                startActivity(new Intent(this, MainActivity.class));
                 break;
         }
         return super.onOptionsItemSelected(item);
